@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Projekat.Models;
 
 namespace Projekat.Repositories
 {
@@ -37,6 +38,144 @@ namespace Projekat.Repositories
                 finally
                 {
                     if (reader != null && !reader.IsClosed) reader.Close();
+                    if (connection != null) { connection.Close(); }
+                }
+
+                return result;
+            }
+        }
+
+        public static Ingredient GetIngredientByID(int ingredientID) //ovo nam je neophodno za brisanje i editovanje, da dobijemo sastojak koji selektujemo, tj. njegov ID
+        {
+            using (SqlConnection connection = new SqlConnection("Server=MILICA;Database=ReceptDB;Trusted_Connection=True;"))
+            {
+                Ingredient result = null;
+                SqlDataReader reader = null;
+                try
+                {
+                    connection.Open();
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = connection;
+
+                    cmd.CommandText = "SELECT * FROM Sastojci WHERE SastojakID = @SastojakID";
+                    cmd.Parameters.AddWithValue("SastojakID", ingredientID);
+
+                    reader = cmd.ExecuteReader();
+                    reader.Read();
+
+                    result = new Ingredient();
+                    result.SastojakID = reader.GetInt32(0);
+                    result.Naziv = reader.GetString(1);
+
+                    reader.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Greska pri citanju podataka o sastojku! Detalji: " + ex.Message);
+                }
+                finally
+                {
+                    if ((reader != null && !reader.IsClosed)) reader.Close();
+                    if (connection != null) { connection.Close(); }
+                }
+
+                return result;
+            }
+        }
+
+        public static bool InsertIngredient(Ingredient ingr)
+        {
+            using (SqlConnection connection = new SqlConnection("Server=MILICA;Database=ReceptDB;Trusted_Connection=True;"))
+            {
+                bool result = false;
+                try
+                {
+                    connection.Open();
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = connection;
+                    cmd.CommandText = "INSERT INTO Sastojci(Naziv) " +
+                                      "VALUES (@Naziv)";
+
+                    cmd.Parameters.AddWithValue("Naziv", ingr.Naziv);
+
+                    int affectedRows = cmd.ExecuteNonQuery();
+                    if (affectedRows > 0) //ako se nešto promijenilo, promijenimo sastojak
+                    {
+                        result = true;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    if (connection != null) { connection.Close(); }
+                }
+
+                return result;
+            }
+        }
+
+        public static bool UpdateIngredient(Ingredient ingr)
+        {
+            using (SqlConnection connection = new SqlConnection("Server=MILICA;Database=ReceptDB;Trusted_Connection=True;"))
+            {
+                bool result = false;
+                try
+                {
+                    connection.Open();
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = connection;
+                    cmd.CommandText = "UPDATE Sastojci SET Naziv = @Naziv WHERE SastojakID = @SastojakID";
+
+                    cmd.Parameters.AddWithValue("Naziv", ingr.Naziv);
+                    cmd.Parameters.AddWithValue("SastojakID", ingr.SastojakID);
+
+                    int affectedRows = cmd.ExecuteNonQuery();
+                    if (affectedRows > 0)
+                    {
+                        result = true;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    if (connection != null) { connection.Close(); }
+                }
+
+                return result;
+            }
+        }
+
+        public static bool DeleteIngredient(int ingredientID)
+        {
+            using (SqlConnection connection = new SqlConnection("Server=MILICA;Database=ReceptDB;Trusted_Connection=True;"))
+            {
+                bool result = false;
+                try
+                {
+                    connection.Open();
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = connection;
+                    cmd.CommandText = "DELETE FROM Sastojci WHERE SastojakID = @SastojakID";
+                    cmd.Parameters.AddWithValue("SastojakID", ingredientID);
+
+                    int affectedRows = cmd.ExecuteNonQuery();
+                    if (affectedRows > 0)
+                    {
+                        result = true;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
                     if (connection != null) { connection.Close(); }
                 }
 

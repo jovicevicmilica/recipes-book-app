@@ -8,7 +8,7 @@ namespace Projekat.Models
 {
     public class Recipe
     {
-        public int RecipeID { get; set; }  //primarni ključ, ne može biti null
+        public int ReceptID { get; set; }  //primarni ključ, ne može biti null
         public string Naziv { get; set; }  //naziv recepta
         public string Opis { get; set; }   //opis recepta
         public int VrijemePripreme { get; set; }  //vrijeme pripreme, u minutima

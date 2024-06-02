@@ -29,21 +29,21 @@
         private void InitializeComponent()
         {
             this.dgRecipes = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.btnEditRecipe = new System.Windows.Forms.Button();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
-            this.opcijeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dodajSastojakToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dodajReceptToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dodajMeniToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.izvještajToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.izađiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.button2 = new System.Windows.Forms.Button();
-            this.dgIngredients = new System.Windows.Forms.DataGridView();
-            this.pregledajToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewIngredientsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewRecipesMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.viewMenusMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addIngredientMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addRecipeMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reportsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnDeleteRecipe = new System.Windows.Forms.Button();
+            this.dgIngredients = new System.Windows.Forms.DataGridView();
+            this.allIngrReportMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.allRcpReportMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgRecipes)).BeginInit();
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgIngredients)).BeginInit();
@@ -52,6 +52,7 @@
             // dgRecipes
             // 
             this.dgRecipes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgRecipes.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dgRecipes.Location = new System.Drawing.Point(12, 135);
             this.dgRecipes.Name = "dgRecipes";
             this.dgRecipes.RowHeadersWidth = 51;
@@ -59,93 +60,111 @@
             this.dgRecipes.Size = new System.Drawing.Size(712, 317);
             this.dgRecipes.TabIndex = 0;
             // 
-            // label1
+            // lblTitle
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 39);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(242, 37);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Knjiga recepata";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Times New Roman", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Location = new System.Drawing.Point(12, 39);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(242, 37);
+            this.lblTitle.TabIndex = 1;
+            this.lblTitle.Text = "Knjiga recepata";
+            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // button1
+            // btnEditRecipe
             // 
-            this.button1.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(12, 91);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(151, 38);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Izmijeni recept";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnEditRecipe.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditRecipe.Location = new System.Drawing.Point(12, 91);
+            this.btnEditRecipe.Name = "btnEditRecipe";
+            this.btnEditRecipe.Size = new System.Drawing.Size(151, 38);
+            this.btnEditRecipe.TabIndex = 2;
+            this.btnEditRecipe.Text = "Izmijeni recept";
+            this.btnEditRecipe.UseVisualStyleBackColor = true;
             // 
             // menuStrip
             // 
             this.menuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.pregledajToolStripMenuItem,
-            this.opcijeToolStripMenuItem,
-            this.izvještajToolStripMenuItem,
-            this.izađiToolStripMenuItem});
+            this.viewMenuItem,
+            this.addMenuItem,
+            this.reportsMenuItem,
+            this.exitMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(1161, 30);
             this.menuStrip.TabIndex = 4;
-            this.menuStrip.Text = "menuStrip1";
+            this.menuStrip.Text = "mainMenu";
             // 
-            // opcijeToolStripMenuItem
+            // viewMenuItem
             // 
-            this.opcijeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.dodajSastojakToolStripMenuItem,
-            this.dodajReceptToolStripMenuItem,
-            this.dodajMeniToolStripMenuItem});
-            this.opcijeToolStripMenuItem.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.opcijeToolStripMenuItem.Name = "opcijeToolStripMenuItem";
-            this.opcijeToolStripMenuItem.Size = new System.Drawing.Size(73, 26);
-            this.opcijeToolStripMenuItem.Text = "Dodaj";
+            this.viewMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.viewIngredientsMenuItem,
+            this.viewRecipesMenuItem});
+            this.viewMenuItem.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.viewMenuItem.Name = "viewMenuItem";
+            this.viewMenuItem.Size = new System.Drawing.Size(100, 26);
+            this.viewMenuItem.Text = "Pregledaj";
             // 
-            // dodajSastojakToolStripMenuItem
+            // viewIngredientsMenuItem
             // 
-            this.dodajSastojakToolStripMenuItem.Name = "dodajSastojakToolStripMenuItem";
-            this.dodajSastojakToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.dodajSastojakToolStripMenuItem.Text = "Sastojak";
+            this.viewIngredientsMenuItem.Name = "viewIngredientsMenuItem";
+            this.viewIngredientsMenuItem.Size = new System.Drawing.Size(161, 26);
+            this.viewIngredientsMenuItem.Text = "Sastojke";
             // 
-            // dodajReceptToolStripMenuItem
+            // viewRecipesMenuItem
             // 
-            this.dodajReceptToolStripMenuItem.Name = "dodajReceptToolStripMenuItem";
-            this.dodajReceptToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.dodajReceptToolStripMenuItem.Text = "Recept";
+            this.viewRecipesMenuItem.Name = "viewRecipesMenuItem";
+            this.viewRecipesMenuItem.Size = new System.Drawing.Size(161, 26);
+            this.viewRecipesMenuItem.Text = "Recepte";
             // 
-            // dodajMeniToolStripMenuItem
+            // addMenuItem
             // 
-            this.dodajMeniToolStripMenuItem.Name = "dodajMeniToolStripMenuItem";
-            this.dodajMeniToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.dodajMeniToolStripMenuItem.Text = "Meni";
+            this.addMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addIngredientMenuItem,
+            this.addRecipeMenuItem});
+            this.addMenuItem.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addMenuItem.Name = "addMenuItem";
+            this.addMenuItem.Size = new System.Drawing.Size(73, 26);
+            this.addMenuItem.Text = "Dodaj";
             // 
-            // izvještajToolStripMenuItem
+            // addIngredientMenuItem
             // 
-            this.izvještajToolStripMenuItem.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.izvještajToolStripMenuItem.Name = "izvještajToolStripMenuItem";
-            this.izvještajToolStripMenuItem.Size = new System.Drawing.Size(91, 26);
-            this.izvještajToolStripMenuItem.Text = "Izvještaj";
+            this.addIngredientMenuItem.Name = "addIngredientMenuItem";
+            this.addIngredientMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.addIngredientMenuItem.Text = "Sastojak";
             // 
-            // izađiToolStripMenuItem
+            // addRecipeMenuItem
             // 
-            this.izađiToolStripMenuItem.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.izađiToolStripMenuItem.Name = "izađiToolStripMenuItem";
-            this.izađiToolStripMenuItem.Size = new System.Drawing.Size(63, 26);
-            this.izađiToolStripMenuItem.Text = "Izađi";
+            this.addRecipeMenuItem.Name = "addRecipeMenuItem";
+            this.addRecipeMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.addRecipeMenuItem.Text = "Recept";
             // 
-            // button2
+            // reportsMenuItem
             // 
-            this.button2.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(169, 91);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(151, 38);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Obriši recept";
-            this.button2.UseVisualStyleBackColor = true;
+            this.reportsMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.allIngrReportMenuItem,
+            this.allRcpReportMenuItem});
+            this.reportsMenuItem.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reportsMenuItem.Name = "reportsMenuItem";
+            this.reportsMenuItem.Size = new System.Drawing.Size(97, 26);
+            this.reportsMenuItem.Text = "Izvještaji";
+            // 
+            // exitMenuItem
+            // 
+            this.exitMenuItem.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.exitMenuItem.Name = "exitMenuItem";
+            this.exitMenuItem.Size = new System.Drawing.Size(63, 26);
+            this.exitMenuItem.Text = "Izađi";
+            // 
+            // btnDeleteRecipe
+            // 
+            this.btnDeleteRecipe.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteRecipe.Location = new System.Drawing.Point(169, 91);
+            this.btnDeleteRecipe.Name = "btnDeleteRecipe";
+            this.btnDeleteRecipe.Size = new System.Drawing.Size(151, 38);
+            this.btnDeleteRecipe.TabIndex = 5;
+            this.btnDeleteRecipe.Text = "Obriši recept";
+            this.btnDeleteRecipe.UseVisualStyleBackColor = true;
             // 
             // dgIngredients
             // 
@@ -157,34 +176,17 @@
             this.dgIngredients.Size = new System.Drawing.Size(401, 317);
             this.dgIngredients.TabIndex = 6;
             // 
-            // pregledajToolStripMenuItem
+            // allIngrReportMenuItem
             // 
-            this.pregledajToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.viewIngredientsMenuItem,
-            this.viewRecipesMenuItem,
-            this.viewMenusMenuItem});
-            this.pregledajToolStripMenuItem.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pregledajToolStripMenuItem.Name = "pregledajToolStripMenuItem";
-            this.pregledajToolStripMenuItem.Size = new System.Drawing.Size(100, 26);
-            this.pregledajToolStripMenuItem.Text = "Pregledaj";
+            this.allIngrReportMenuItem.Name = "allIngrReportMenuItem";
+            this.allIngrReportMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.allIngrReportMenuItem.Text = "Svi sastojci";
             // 
-            // viewIngredientsMenuItem
+            // allRcpReportMenuItem
             // 
-            this.viewIngredientsMenuItem.Name = "viewIngredientsMenuItem";
-            this.viewIngredientsMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.viewIngredientsMenuItem.Text = "Sastojke";
-            // 
-            // viewRecipesMenuItem
-            // 
-            this.viewRecipesMenuItem.Name = "viewRecipesMenuItem";
-            this.viewRecipesMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.viewRecipesMenuItem.Text = "Recepte";
-            // 
-            // viewMenusMenuItem
-            // 
-            this.viewMenusMenuItem.Name = "viewMenusMenuItem";
-            this.viewMenusMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.viewMenusMenuItem.Text = "Menije";
+            this.allRcpReportMenuItem.Name = "allRcpReportMenuItem";
+            this.allRcpReportMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.allRcpReportMenuItem.Text = "Svi recepti";
             // 
             // FrmRecipes
             // 
@@ -192,9 +194,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1161, 467);
             this.Controls.Add(this.dgIngredients);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnDeleteRecipe);
+            this.Controls.Add(this.btnEditRecipe);
+            this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.dgRecipes);
             this.Controls.Add(this.menuStrip);
             this.MainMenuStrip = this.menuStrip;
@@ -212,21 +214,21 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgRecipes;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.Button btnEditRecipe;
         private System.Windows.Forms.MenuStrip menuStrip;
-        private System.Windows.Forms.ToolStripMenuItem opcijeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem dodajSastojakToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem dodajReceptToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem dodajMeniToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem izvještajToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem izađiToolStripMenuItem;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ToolStripMenuItem addMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addIngredientMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addRecipeMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reportsMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exitMenuItem;
+        private System.Windows.Forms.Button btnDeleteRecipe;
         private System.Windows.Forms.DataGridView dgIngredients;
-        private System.Windows.Forms.ToolStripMenuItem pregledajToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem viewMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewIngredientsMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewRecipesMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem viewMenusMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem allIngrReportMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem allRcpReportMenuItem;
     }
 }
 

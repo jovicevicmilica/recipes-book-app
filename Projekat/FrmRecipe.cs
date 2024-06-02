@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Projekat.Models;
+using Projekat.Repositories;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +14,74 @@ namespace Projekat
 {
     public partial class FrmRecipe : Form
     {
-        public FrmRecipe()
+        private FrmRecipes parentForm; //forma na koju se vraćemo poslije dodavanja/editovanja recepta, glavna
+        private int selectedRecipeID; //izabrani recept, njegov ID
+
+        public FrmRecipe(FrmRecipes parent, int selectedRecipeID) //potreban nam je konstruktor sa dva argumenta kako bi znali koja je glavna forma, i koji je izabrani recept, da bi mogli da dodamo/ažuriramo
         {
             InitializeComponent();
+
+            this.parentForm = parent;
+            this.selectedRecipeID = selectedRecipeID;
+            this.btnSave.Click += BtnSave_Click;
+
+            InitData();
+        }
+
+        private void InitData()
+        {
+            if (this.selectedRecipeID != -1) //ako je izabran recept, to znači da radimo ažuriranje, a ne dodavanje
+            {
+                this.lblTitle.Text = "Izmijeni recept";
+                this.btnSave.Text = "Izmijeni";
+
+                Recipe r = RecipeRepository.GetRecipeByID(this.selectedRecipeID);
+                if (r != null)
+                {
+                    this.txtName.Text = r.Naziv;
+                    this.txtDesc.Text = r.Opis;
+                    this.txtTimeMaking.Text = r.VrijemePripreme.ToString();
+                    this.txtTimeCooking.Text = r.VrijemeKuvanja.ToString();
+                    this.txtTime.Text = r.UkupnoVrijeme.ToString();
+                    this.txtNumPortions.Text = r.BrojPorcija.ToString();
+                }
+            }
+        }
+
+        private void BtnSave_Click(object sender, EventArgs e)
+        {
+            // TODO: VALIDACIJA
+
+            Recipe rec = new Recipe();
+            rec.Naziv = this.txtName.Text;
+            rec.Opis = this.txtDesc.Text;
+            rec.VrijemePripreme = Convert.ToInt32(this.txtTimeMaking.Text);
+            rec.VrijemeKuvanja = Convert.ToInt32(this.txtTimeCooking.Text);
+            rec.UkupnoVrijeme = Convert.ToInt32(this.txtTime.Text);
+            rec.BrojPorcija = Convert.ToInt32(this.txtNumPortions.Text);
+
+            bool result = false;
+            if (this.selectedRecipeID != -1)
+            {
+                //AŽURIRAMO, inače DODAMO
+                rec.ReceptID = this.selectedRecipeID;
+                result = RecipeRepository.UpdateRecipe(rec);
+            }
+            else
+            {
+                //DODAMO
+                result = RecipeRepository.InsertRecipe(rec);
+            }
+
+            if (result)
+            {
+                this.parentForm.InitData();
+                MessageBox.Show("Uspjesno sacuvan recept!");
+            }
+            else
+            {
+                MessageBox.Show("Greska pri cuvanju recepta!");
+            }
         }
     }
 }
