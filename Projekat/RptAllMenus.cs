@@ -16,14 +16,14 @@ namespace Projekat {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class Izvještaj : ReportClass {
+    public class RptAllMenus : ReportClass {
         
-        public Izvještaj() {
+        public RptAllMenus() {
         }
         
         public override string ResourceName {
             get {
-                return "Izvještaj.rpt";
+                return "RptAllMenus.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace Projekat {
         
         public override string FullResourceName {
             get {
-                return "Projekat.Izvještaj.rpt";
+                return "Projekat.RptAllMenus.rpt";
             }
             set {
                 // Do nothing
@@ -90,9 +90,9 @@ namespace Projekat {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedIzvještaj : Component, ICachedReport {
+    public class CachedRptAllMenus : Component, ICachedReport {
         
-        public CachedIzvještaj() {
+        public CachedRptAllMenus() {
         }
         
         [Browsable(false)]
@@ -129,7 +129,7 @@ namespace Projekat {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            Izvještaj rpt = new Izvještaj();
+            RptAllMenus rpt = new RptAllMenus();
             rpt.Site = this.Site;
             return rpt;
         }

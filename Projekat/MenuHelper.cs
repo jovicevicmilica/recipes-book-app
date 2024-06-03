@@ -11,20 +11,10 @@ namespace Projekat
     public static class MenuHelper
     {
         //pomoćna klasa za meni, da ne pišem posebno funkcije u svakoj komponenti, već da ih samo pozivam, jer sastojci i recepti dijele meni
-        public static void PreviewIngredients(Form currentForm)
+        public static void AddMenu(FrmMenus currentForm)
         {
-            using (FrmIngredients ingredientsForm = new FrmIngredients())
-            {
-                ingredientsForm.ShowDialog();
-            }
-        }
-
-        public static void PreviewRecipes(Form currentForm)
-        {
-            using (FrmRecipes recipesForm = new FrmRecipes())
-            {
-                recipesForm.ShowDialog();
-            }
+            FrmMenu menuForm = new FrmMenu(currentForm, -1); //otvorimo formu za dodavanje novog menija
+            menuForm.ShowDialog();
         }
 
         public static void AddRecipe(FrmRecipes currentForm)
@@ -48,6 +38,12 @@ namespace Projekat
         public static void AllIngrReportMenuItem_Click()
         {
             FrmReport frmReport = new FrmReport(Enumerations.ReportType.AllIngredients);
+            frmReport.ShowDialog();
+        }
+
+        public static void AllMenusReportMenuItem_Click()
+        {
+            FrmReport frmReport = new FrmReport(Enumerations.ReportType.AllMenus);
             frmReport.ShowDialog();
         }
 

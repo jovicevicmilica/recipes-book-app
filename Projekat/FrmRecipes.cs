@@ -25,8 +25,6 @@ namespace Projekat
         {
             InitializeComponent();
             this.dgRecipes.SelectionChanged += new EventHandler(dgRecipes_SelectionChanged); //kada selektujemo recept, prikazaće nam sastojke za taj recept
-            this.viewIngredientsMenuItem.Click += (sender, e) => MenuHelper.PreviewIngredients(this); //da klikom na pregledaj sastojke otvorimo novu formu
-            this.viewRecipesMenuItem.Click += (sender, e) => MenuHelper.PreviewRecipes(this); //klikom na pregledaj recept otvorimo tu formu
             this.exitMenuItem.Click += (sender, e) => MenuHelper.ExitApplication(); //da zatvorimo aplikaciju
             this.addRecipeMenuItem.Click += (sender, e) => MenuHelper.AddRecipe(this); //dodavanje novog recepta preko menu helper - a
             this.addIngredientMenuItem.Click += (sender, e) => MenuHelper.AddIngredient(new FrmIngredients());
@@ -34,15 +32,41 @@ namespace Projekat
             //izvještaji
             allRcpReportMenuItem.Click += (sender, e) => MenuHelper.AllRcpReportMenuItem_Click();
             allIngrReportMenuItem.Click += (sender, e) => MenuHelper.AllIngrReportMenuItem_Click();
+            allMenusReportMenuItem.Click += (sender, e) => MenuHelper.AllMenusReportMenuItem_Click();
 
             this.btnEditRecipe.Click += BtnEditRecipe_Click; //da ga ažuriramo
             this.btnDeleteRecipe.Click += BtnDeleteRecipe_Click; //da ga obrišemo
+            this.btnSearch.Click += BtnSearch_Click; //search funkcionalnost
+            this.btnAddToMenu.Click += BtnAddToMenu_Click; //da dodamo recept u meni
             this.dgRecipes.CellClick += DgRecipes_CellClick; //da se selektuje onaj na čije polje kliknemo 
 
             //da bi omogućili automatsko dodavanje/ažuriranje redova preko data - grida
             this.dgRecipes.RowValidated += DgRecipes_RowValidated;
 
             InitDataSqlAdapter();
+        }
+
+        private void BtnSearch_Click(object sender, EventArgs e)
+        {
+            string searchText = this.txtNameSearch.Text;
+
+            int timeTo;
+            int.TryParse(this.txtTimeTo.Text, out timeTo);
+            if (timeTo == 0) timeTo = -1;
+
+            int timeFrom;
+            int.TryParse(this.txtTimeFrom.Text, out timeFrom);
+            if (timeFrom == 0) timeFrom = -1;
+
+            this.data = RecipeRepository.SearchRecipes(searchText, timeFrom, timeTo);
+            if (this.data != null)
+            {
+                this.dgRecipes.DataSource = this.data;
+            }
+            else
+            {
+                MessageBox.Show("Greska pri ucitavanju recepata!");
+            }
         }
 
         public void InitData() //pokretanje programa, a kasnije će biti sa SQL adapterom
@@ -81,6 +105,19 @@ namespace Projekat
             }
         }
 
+        private void BtnAddToMenu_Click(object sender, EventArgs e)
+        {
+            if (this.selectedRecipeID == -1)
+            {
+                MessageBox.Show("Odaberite recept koji biste da dodate u meni!");
+            }
+            else
+            {
+                AddRecipeToMenu frmAdd = new AddRecipeToMenu(this.selectedRecipeID);
+                frmAdd.ShowDialog();
+            }
+        }
+
         private void BtnEditRecipe_Click(object sender, EventArgs e)
         {
             if (this.selectedRecipeID == -1)
@@ -102,7 +139,7 @@ namespace Projekat
             }
             else
             {
-                Dialog customDialog = new Dialog("Da li ste sigurni da zelite da obrisete recept?");
+                Dialog customDialog = new Dialog("Da li ste sigurni da želite da obrišete recept?");
                 DialogResult dialogR = customDialog.ShowDialog();
                 if (dialogR == DialogResult.Yes)
                 {
@@ -147,11 +184,24 @@ namespace Projekat
         {
             DataTable changes = ((DataTable)this.dgRecipes.DataSource).GetChanges();
 
-            if (changes != null)
+            if (changes != null && changes.Rows.Count > 0)
             {
+                foreach (DataRow row in changes.Rows)
+                {
+                    if (row.RowState != DataRowState.Deleted)
+                    {
+                        //izračunamo UkupnoVrijeme kao zbir VrijemePripreme i VrijemeKuvanja
+                        int vrijemePripreme = row["VrijemePripreme"] != DBNull.Value ? Convert.ToInt32(row["VrijemePripreme"]) : 0;
+                        int vrijemeKuvanja = row["VrijemeKuvanja"] != DBNull.Value ? Convert.ToInt32(row["VrijemeKuvanja"]) : 0;
+                        row["UkupnoVrijeme"] = vrijemePripreme + vrijemeKuvanja;
+                    }
+                }
+
+                //ažuriramo bazu podataka
                 sqlDataAdapter.Update(changes);
                 ((DataTable)this.dgRecipes.DataSource).AcceptChanges();
             }
         }
+
     }
 }

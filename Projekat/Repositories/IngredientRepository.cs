@@ -182,5 +182,55 @@ namespace Projekat.Repositories
                 return result;
             }
         }
+
+        public static DataTable SearchIngredients(string searchText)
+        {
+            using (SqlConnection connection = new SqlConnection("Server=MILICA;Database=ReceptDB;Trusted_Connection=True;"))
+            {
+                SqlDataReader reader = null;
+                DataTable result = null;
+                try
+                {
+                    connection.Open();
+
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = connection;
+
+                    if (string.IsNullOrEmpty(searchText)) //ako je search bar prazan
+                    {
+                        cmd.CommandText = "SELECT * FROM Sastojci";
+                    }
+                    else
+                    {
+                        string cmdText = "SELECT * FROM Sastojci WHERE ";
+                        if (!string.IsNullOrEmpty(searchText))
+                        {
+                            cmdText = cmdText + "(Naziv LIKE @SearchText) AND ";
+                            cmd.Parameters.AddWithValue("SearchText", "%" + searchText + "%");
+                        }
+
+
+                        cmdText = cmdText.Substring(0, cmdText.Length - 4);
+                        cmd.CommandText = cmdText;
+                    }
+
+                    reader = cmd.ExecuteReader();
+                    result = new DataTable();
+                    result.Load(reader);
+                    reader.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Greska pri konekciji sa bazom! Detalji: " + ex.Message);
+                }
+                finally
+                {
+                    if ((reader != null && !reader.IsClosed)) reader.Close();
+                    if (connection != null) { connection.Close(); }
+                }
+
+                return result;
+            }
+        }
     }
 }

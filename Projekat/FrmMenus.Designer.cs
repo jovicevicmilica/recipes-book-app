@@ -1,6 +1,6 @@
 ﻿namespace Projekat
 {
-    partial class FrmIngredients
+    partial class FrmMenus
     {
         /// <summary>
         /// Required designer variable.
@@ -28,15 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmIngredients));
-            this.btnDeleteIngredient = new System.Windows.Forms.Button();
-            this.btnEditIngredient = new System.Windows.Forms.Button();
-            this.lblIngredients = new System.Windows.Forms.Label();
-            this.dgIngredients = new System.Windows.Forms.DataGridView();
-            this.btnAddToRecipe = new System.Windows.Forms.Button();
-            this.lblName = new System.Windows.Forms.Label();
-            this.txtNameSearch = new System.Windows.Forms.TextBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMenus));
             this.btnSearch = new System.Windows.Forms.Button();
+            this.txtNameSearch = new System.Windows.Forms.TextBox();
+            this.lblName = new System.Windows.Forms.Label();
+            this.btnDeleteMenu = new System.Windows.Forms.Button();
+            this.btnEditMenu = new System.Windows.Forms.Button();
+            this.lblMenus = new System.Windows.Forms.Label();
+            this.dgMenus = new System.Windows.Forms.DataGridView();
+            this.dgRecipes = new System.Windows.Forms.DataGridView();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.addMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addIngredientMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,90 +47,92 @@
             this.allRcpReportMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.allMenusReportMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            ((System.ComponentModel.ISupportInitialize)(this.dgIngredients)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgMenus)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgRecipes)).BeginInit();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
-            // btnDeleteIngredient
+            // btnSearch
             // 
-            this.btnDeleteIngredient.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeleteIngredient.Location = new System.Drawing.Point(238, 110);
-            this.btnDeleteIngredient.Name = "btnDeleteIngredient";
-            this.btnDeleteIngredient.Size = new System.Drawing.Size(194, 42);
-            this.btnDeleteIngredient.TabIndex = 9;
-            this.btnDeleteIngredient.Text = "OBRIŠI SASTOJAK";
-            this.btnDeleteIngredient.UseVisualStyleBackColor = true;
+            this.btnSearch.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.Location = new System.Drawing.Point(286, 165);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(194, 42);
+            this.btnSearch.TabIndex = 28;
+            this.btnSearch.Text = "PRETRAŽI";
+            this.btnSearch.UseVisualStyleBackColor = true;
             // 
-            // btnEditIngredient
+            // txtNameSearch
             // 
-            this.btnEditIngredient.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditIngredient.Location = new System.Drawing.Point(12, 110);
-            this.btnEditIngredient.Name = "btnEditIngredient";
-            this.btnEditIngredient.Size = new System.Drawing.Size(209, 42);
-            this.btnEditIngredient.TabIndex = 8;
-            this.btnEditIngredient.Text = "IZMIJENI SASTOJAK";
-            this.btnEditIngredient.UseVisualStyleBackColor = true;
-            // 
-            // lblIngredients
-            // 
-            this.lblIngredients.AutoSize = true;
-            this.lblIngredients.Font = new System.Drawing.Font("Poppins", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIngredients.ForeColor = System.Drawing.Color.White;
-            this.lblIngredients.Location = new System.Drawing.Point(2, 47);
-            this.lblIngredients.Name = "lblIngredients";
-            this.lblIngredients.Size = new System.Drawing.Size(160, 58);
-            this.lblIngredients.TabIndex = 7;
-            this.lblIngredients.Text = "Sastojci";
-            this.lblIngredients.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // dgIngredients
-            // 
-            this.dgIngredients.BackgroundColor = System.Drawing.Color.White;
-            this.dgIngredients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgIngredients.Location = new System.Drawing.Point(167, 228);
-            this.dgIngredients.Name = "dgIngredients";
-            this.dgIngredients.RowHeadersWidth = 51;
-            this.dgIngredients.RowTemplate.Height = 24;
-            this.dgIngredients.Size = new System.Drawing.Size(337, 255);
-            this.dgIngredients.TabIndex = 6;
-            // 
-            // btnAddToRecipe
-            // 
-            this.btnAddToRecipe.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddToRecipe.Location = new System.Drawing.Point(500, 110);
-            this.btnAddToRecipe.Name = "btnAddToRecipe";
-            this.btnAddToRecipe.Size = new System.Drawing.Size(208, 42);
-            this.btnAddToRecipe.TabIndex = 11;
-            this.btnAddToRecipe.Text = "DODAJ U RECEPT";
-            this.btnAddToRecipe.UseVisualStyleBackColor = true;
+            this.txtNameSearch.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNameSearch.Location = new System.Drawing.Point(81, 173);
+            this.txtNameSearch.Name = "txtNameSearch";
+            this.txtNameSearch.Size = new System.Drawing.Size(168, 30);
+            this.txtNameSearch.TabIndex = 27;
             // 
             // lblName
             // 
             this.lblName.AutoSize = true;
             this.lblName.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.Location = new System.Drawing.Point(7, 178);
+            this.lblName.Location = new System.Drawing.Point(20, 176);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(55, 26);
-            this.lblName.TabIndex = 12;
+            this.lblName.TabIndex = 26;
             this.lblName.Text = "Naziv:";
             // 
-            // txtNameSearch
+            // btnDeleteMenu
             // 
-            this.txtNameSearch.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNameSearch.Location = new System.Drawing.Point(68, 174);
-            this.txtNameSearch.Name = "txtNameSearch";
-            this.txtNameSearch.Size = new System.Drawing.Size(168, 30);
-            this.txtNameSearch.TabIndex = 13;
+            this.btnDeleteMenu.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteMenu.Location = new System.Drawing.Point(244, 113);
+            this.btnDeleteMenu.Name = "btnDeleteMenu";
+            this.btnDeleteMenu.Size = new System.Drawing.Size(194, 42);
+            this.btnDeleteMenu.TabIndex = 25;
+            this.btnDeleteMenu.Text = "OBRIŠI SASTOJAK";
+            this.btnDeleteMenu.UseVisualStyleBackColor = true;
             // 
-            // btnSearch
+            // btnEditMenu
             // 
-            this.btnSearch.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.Location = new System.Drawing.Point(270, 169);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(194, 42);
-            this.btnSearch.TabIndex = 14;
-            this.btnSearch.Text = "PRETRAŽI";
-            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnEditMenu.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditMenu.Location = new System.Drawing.Point(19, 113);
+            this.btnEditMenu.Name = "btnEditMenu";
+            this.btnEditMenu.Size = new System.Drawing.Size(209, 42);
+            this.btnEditMenu.TabIndex = 24;
+            this.btnEditMenu.Text = "IZMIJENI MENI";
+            this.btnEditMenu.UseVisualStyleBackColor = true;
+            // 
+            // lblMenus
+            // 
+            this.lblMenus.AutoSize = true;
+            this.lblMenus.Font = new System.Drawing.Font("Poppins", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMenus.ForeColor = System.Drawing.Color.White;
+            this.lblMenus.Location = new System.Drawing.Point(12, 50);
+            this.lblMenus.Name = "lblMenus";
+            this.lblMenus.Size = new System.Drawing.Size(127, 60);
+            this.lblMenus.TabIndex = 23;
+            this.lblMenus.Text = "Meniji";
+            this.lblMenus.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // dgMenus
+            // 
+            this.dgMenus.BackgroundColor = System.Drawing.Color.White;
+            this.dgMenus.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgMenus.Location = new System.Drawing.Point(19, 222);
+            this.dgMenus.Name = "dgMenus";
+            this.dgMenus.RowHeadersWidth = 51;
+            this.dgMenus.RowTemplate.Height = 24;
+            this.dgMenus.Size = new System.Drawing.Size(530, 298);
+            this.dgMenus.TabIndex = 22;
+            // 
+            // dgRecipes
+            // 
+            this.dgRecipes.BackgroundColor = System.Drawing.Color.White;
+            this.dgRecipes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgRecipes.Location = new System.Drawing.Point(564, 222);
+            this.dgRecipes.Name = "dgRecipes";
+            this.dgRecipes.RowHeadersWidth = 51;
+            this.dgRecipes.RowTemplate.Height = 24;
+            this.dgRecipes.Size = new System.Drawing.Size(489, 298);
+            this.dgRecipes.TabIndex = 29;
             // 
             // menuStrip
             // 
@@ -142,8 +144,8 @@
             this.exitMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(720, 38);
-            this.menuStrip.TabIndex = 15;
+            this.menuStrip.Size = new System.Drawing.Size(1065, 38);
+            this.menuStrip.TabIndex = 30;
             this.menuStrip.Text = "mainMenu";
             // 
             // addMenuItem
@@ -218,26 +220,27 @@
             this.exitMenuItem.Size = new System.Drawing.Size(65, 34);
             this.exitMenuItem.Text = "Izađi";
             // 
-            // FrmIngredients
+            // FrmMenus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Tan;
-            this.ClientSize = new System.Drawing.Size(720, 495);
+            this.ClientSize = new System.Drawing.Size(1065, 532);
             this.Controls.Add(this.menuStrip);
+            this.Controls.Add(this.dgRecipes);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtNameSearch);
             this.Controls.Add(this.lblName);
-            this.Controls.Add(this.btnAddToRecipe);
-            this.Controls.Add(this.btnDeleteIngredient);
-            this.Controls.Add(this.btnEditIngredient);
-            this.Controls.Add(this.lblIngredients);
-            this.Controls.Add(this.dgIngredients);
+            this.Controls.Add(this.btnDeleteMenu);
+            this.Controls.Add(this.btnEditMenu);
+            this.Controls.Add(this.lblMenus);
+            this.Controls.Add(this.dgMenus);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "FrmIngredients";
+            this.Name = "FrmMenus";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Sastojci";
-            ((System.ComponentModel.ISupportInitialize)(this.dgIngredients)).EndInit();
+            this.Text = "Meniji";
+            ((System.ComponentModel.ISupportInitialize)(this.dgMenus)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgRecipes)).EndInit();
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.ResumeLayout(false);
@@ -246,15 +249,14 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnDeleteIngredient;
-        private System.Windows.Forms.Button btnEditIngredient;
-        private System.Windows.Forms.Label lblIngredients;
-        private System.Windows.Forms.DataGridView dgIngredients;
-        private System.Windows.Forms.Button btnAddToRecipe;
-        private System.Windows.Forms.Label lblName;
-        private System.Windows.Forms.TextBox txtNameSearch;
         private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.TextBox txtNameSearch;
+        private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.Button btnDeleteMenu;
+        private System.Windows.Forms.Button btnEditMenu;
+        private System.Windows.Forms.Label lblMenus;
+        private System.Windows.Forms.DataGridView dgMenus;
+        private System.Windows.Forms.DataGridView dgRecipes;
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem addMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addIngredientMenuItem;

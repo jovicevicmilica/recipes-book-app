@@ -42,7 +42,6 @@ namespace Projekat
                     this.txtDesc.Text = r.Opis;
                     this.txtTimeMaking.Text = r.VrijemePripreme.ToString();
                     this.txtTimeCooking.Text = r.VrijemeKuvanja.ToString();
-                    this.txtTime.Text = r.UkupnoVrijeme.ToString();
                     this.txtNumPortions.Text = r.BrojPorcija.ToString();
                 }
             }
@@ -51,25 +50,31 @@ namespace Projekat
         private void BtnSave_Click(object sender, EventArgs e)
         {
             // TODO: VALIDACIJA
-
             Recipe rec = new Recipe();
             rec.Naziv = this.txtName.Text;
             rec.Opis = this.txtDesc.Text;
-            rec.VrijemePripreme = Convert.ToInt32(this.txtTimeMaking.Text);
-            rec.VrijemeKuvanja = Convert.ToInt32(this.txtTimeCooking.Text);
-            rec.UkupnoVrijeme = Convert.ToInt32(this.txtTime.Text);
+
+            //konvertovanje vremena pripreme i vremena kuvanja iz tekstualnih polja u int, da bi sabrali ukupno
+            int vrijemePripreme = Convert.ToInt32(this.txtTimeMaking.Text);
+            int vrijemeKuvanja = Convert.ToInt32(this.txtTimeCooking.Text);
+
+            //izračunavanje ukupnog vremena kao zbira vremena pripreme i vremena kuvanja
+            rec.VrijemePripreme = vrijemePripreme;
+            rec.VrijemeKuvanja = vrijemeKuvanja;
+            rec.UkupnoVrijeme = vrijemePripreme + vrijemeKuvanja;
+
             rec.BrojPorcija = Convert.ToInt32(this.txtNumPortions.Text);
 
             bool result = false;
             if (this.selectedRecipeID != -1)
             {
-                //AŽURIRAMO, inače DODAMO
+                //ažuriranje postojećeg recepta
                 rec.ReceptID = this.selectedRecipeID;
                 result = RecipeRepository.UpdateRecipe(rec);
             }
             else
             {
-                //DODAMO
+                //dodavanje novog recepta
                 result = RecipeRepository.InsertRecipe(rec);
             }
 

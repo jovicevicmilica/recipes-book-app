@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Projekat.Enumerations
+namespace Projekat.Models
 {
-    public enum ReportType
+    internal class Measurement
     {
-        AllIngredients,
-        AllRecipes,
-        AllMenus
+        public string Naziv { get; set; }
     }
 }

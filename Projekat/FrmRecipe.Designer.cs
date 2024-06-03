@@ -28,165 +28,199 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRecipe));
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblTimeCooking = new System.Windows.Forms.Label();
             this.lblTimeMaking = new System.Windows.Forms.Label();
             this.lblDesc = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
-            this.lblTime = new System.Windows.Forms.Label();
             this.lblNumPortions = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.txtDesc = new System.Windows.Forms.TextBox();
             this.txtTimeMaking = new System.Windows.Forms.TextBox();
             this.txtTimeCooking = new System.Windows.Forms.TextBox();
-            this.txtTime = new System.Windows.Forms.TextBox();
             this.txtNumPortions = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
+            this.lblMin = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Location = new System.Drawing.Point(295, 33);
+            this.lblTitle.Font = new System.Drawing.Font("Abel Pro", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.ForeColor = System.Drawing.Color.White;
+            this.lblTitle.Location = new System.Drawing.Point(286, 33);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(166, 32);
+            this.lblTitle.Size = new System.Drawing.Size(220, 46);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Dodaj recept";
             // 
             // lblTimeCooking
             // 
             this.lblTimeCooking.AutoSize = true;
-            this.lblTimeCooking.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTimeCooking.Location = new System.Drawing.Point(153, 248);
+            this.lblTimeCooking.Font = new System.Drawing.Font("Poppins", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTimeCooking.ForeColor = System.Drawing.Color.White;
+            this.lblTimeCooking.Location = new System.Drawing.Point(113, 242);
             this.lblTimeCooking.Name = "lblTimeCooking";
-            this.lblTimeCooking.Size = new System.Drawing.Size(139, 22);
+            this.lblTimeCooking.Size = new System.Drawing.Size(210, 40);
             this.lblTimeCooking.TabIndex = 1;
-            this.lblTimeCooking.Text = "Vrijeme kuvanja";
+            this.lblTimeCooking.Text = "Vrijeme kuvanja:";
             // 
             // lblTimeMaking
             // 
             this.lblTimeMaking.AutoSize = true;
-            this.lblTimeMaking.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTimeMaking.Location = new System.Drawing.Point(153, 201);
+            this.lblTimeMaking.Font = new System.Drawing.Font("Poppins", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTimeMaking.ForeColor = System.Drawing.Color.White;
+            this.lblTimeMaking.Location = new System.Drawing.Point(98, 199);
             this.lblTimeMaking.Name = "lblTimeMaking";
-            this.lblTimeMaking.Size = new System.Drawing.Size(150, 22);
+            this.lblTimeMaking.Size = new System.Drawing.Size(225, 40);
             this.lblTimeMaking.TabIndex = 2;
-            this.lblTimeMaking.Text = "Vrijeme pripreme";
+            this.lblTimeMaking.Text = "Vrijeme pripreme:";
             // 
             // lblDesc
             // 
             this.lblDesc.AutoSize = true;
-            this.lblDesc.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDesc.Location = new System.Drawing.Point(153, 151);
+            this.lblDesc.Font = new System.Drawing.Font("Poppins", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDesc.ForeColor = System.Drawing.Color.White;
+            this.lblDesc.Location = new System.Drawing.Point(240, 151);
             this.lblDesc.Name = "lblDesc";
-            this.lblDesc.Size = new System.Drawing.Size(48, 22);
+            this.lblDesc.Size = new System.Drawing.Size(74, 40);
             this.lblDesc.TabIndex = 3;
-            this.lblDesc.Text = "Opis";
+            this.lblDesc.Text = "Opis:";
             // 
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.Location = new System.Drawing.Point(153, 103);
+            this.lblName.Font = new System.Drawing.Font("Poppins", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.ForeColor = System.Drawing.Color.White;
+            this.lblName.Location = new System.Drawing.Point(240, 106);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(57, 22);
+            this.lblName.Size = new System.Drawing.Size(83, 40);
             this.lblName.TabIndex = 4;
-            this.lblName.Text = "Naziv";
-            // 
-            // lblTime
-            // 
-            this.lblTime.AutoSize = true;
-            this.lblTime.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTime.Location = new System.Drawing.Point(153, 297);
-            this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(136, 22);
-            this.lblTime.TabIndex = 5;
-            this.lblTime.Text = "Ukupno vrijeme";
+            this.lblName.Text = "Naziv:";
             // 
             // lblNumPortions
             // 
             this.lblNumPortions.AutoSize = true;
-            this.lblNumPortions.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNumPortions.Location = new System.Drawing.Point(153, 344);
+            this.lblNumPortions.Font = new System.Drawing.Font("Poppins", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumPortions.ForeColor = System.Drawing.Color.White;
+            this.lblNumPortions.Location = new System.Drawing.Point(169, 292);
             this.lblNumPortions.Name = "lblNumPortions";
-            this.lblNumPortions.Size = new System.Drawing.Size(108, 22);
+            this.lblNumPortions.Size = new System.Drawing.Size(154, 40);
             this.lblNumPortions.TabIndex = 6;
-            this.lblNumPortions.Text = "Broj porcija";
+            this.lblNumPortions.Text = "Broj porcija:";
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(301, 104);
+            this.txtName.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtName.Location = new System.Drawing.Point(346, 112);
+            this.txtName.Margin = new System.Windows.Forms.Padding(20);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(252, 22);
+            this.txtName.Size = new System.Drawing.Size(266, 30);
             this.txtName.TabIndex = 7;
             // 
             // txtDesc
             // 
-            this.txtDesc.Location = new System.Drawing.Point(250, 151);
+            this.txtDesc.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDesc.Location = new System.Drawing.Point(346, 157);
             this.txtDesc.Name = "txtDesc";
-            this.txtDesc.Size = new System.Drawing.Size(466, 22);
+            this.txtDesc.Size = new System.Drawing.Size(376, 30);
             this.txtDesc.TabIndex = 8;
             // 
             // txtTimeMaking
             // 
-            this.txtTimeMaking.Location = new System.Drawing.Point(380, 202);
+            this.txtTimeMaking.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTimeMaking.Location = new System.Drawing.Point(346, 205);
             this.txtTimeMaking.Name = "txtTimeMaking";
-            this.txtTimeMaking.Size = new System.Drawing.Size(115, 22);
+            this.txtTimeMaking.Size = new System.Drawing.Size(115, 30);
             this.txtTimeMaking.TabIndex = 9;
             // 
             // txtTimeCooking
             // 
-            this.txtTimeCooking.Location = new System.Drawing.Point(380, 248);
+            this.txtTimeCooking.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTimeCooking.Location = new System.Drawing.Point(346, 248);
             this.txtTimeCooking.Name = "txtTimeCooking";
-            this.txtTimeCooking.Size = new System.Drawing.Size(115, 22);
+            this.txtTimeCooking.Size = new System.Drawing.Size(115, 30);
             this.txtTimeCooking.TabIndex = 10;
-            // 
-            // txtTime
-            // 
-            this.txtTime.Location = new System.Drawing.Point(380, 297);
-            this.txtTime.Name = "txtTime";
-            this.txtTime.Size = new System.Drawing.Size(115, 22);
-            this.txtTime.TabIndex = 11;
             // 
             // txtNumPortions
             // 
-            this.txtNumPortions.Location = new System.Drawing.Point(380, 344);
+            this.txtNumPortions.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNumPortions.Location = new System.Drawing.Point(346, 298);
             this.txtNumPortions.Name = "txtNumPortions";
-            this.txtNumPortions.Size = new System.Drawing.Size(115, 22);
+            this.txtNumPortions.Size = new System.Drawing.Size(115, 30);
             this.txtNumPortions.TabIndex = 12;
             // 
             // btnSave
             // 
-            this.btnSave.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(301, 385);
+            this.btnSave.Font = new System.Drawing.Font("Poppins", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Location = new System.Drawing.Point(319, 363);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(142, 43);
             this.btnSave.TabIndex = 13;
-            this.btnSave.Text = "Sačuvaj";
+            this.btnSave.Text = "DODAJ";
             this.btnSave.UseVisualStyleBackColor = true;
+            // 
+            // lblMin
+            // 
+            this.lblMin.AutoSize = true;
+            this.lblMin.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMin.ForeColor = System.Drawing.Color.White;
+            this.lblMin.Location = new System.Drawing.Point(467, 206);
+            this.lblMin.Name = "lblMin";
+            this.lblMin.Size = new System.Drawing.Size(74, 30);
+            this.lblMin.TabIndex = 14;
+            this.lblMin.Text = "minuta";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(467, 248);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(74, 30);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "minuta";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.InitialImage = global::Projekat.Properties.Resources.cheffilled;
+            this.pictureBox1.Location = new System.Drawing.Point(544, 298);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(191, 127);
+            this.pictureBox1.TabIndex = 16;
+            this.pictureBox1.TabStop = false;
             // 
             // FrmRecipe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.MediumOrchid;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblMin);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtNumPortions);
-            this.Controls.Add(this.txtTime);
             this.Controls.Add(this.txtTimeCooking);
             this.Controls.Add(this.txtTimeMaking);
             this.Controls.Add(this.txtDesc);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.lblNumPortions);
-            this.Controls.Add(this.lblTime);
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.lblDesc);
             this.Controls.Add(this.lblTimeMaking);
             this.Controls.Add(this.lblTimeCooking);
             this.Controls.Add(this.lblTitle);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmRecipe";
-            this.Text = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Dodaj recept";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -199,14 +233,15 @@
         private System.Windows.Forms.Label lblTimeMaking;
         private System.Windows.Forms.Label lblDesc;
         private System.Windows.Forms.Label lblName;
-        private System.Windows.Forms.Label lblTime;
         private System.Windows.Forms.Label lblNumPortions;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.TextBox txtDesc;
         private System.Windows.Forms.TextBox txtTimeMaking;
         private System.Windows.Forms.TextBox txtTimeCooking;
-        private System.Windows.Forms.TextBox txtTime;
         private System.Windows.Forms.TextBox txtNumPortions;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Label lblMin;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

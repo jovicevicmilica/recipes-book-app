@@ -52,7 +52,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddIngredientToRecipe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddIngredientToRecipe.Designer.cs">
+      <DependentUpon>AddIngredientToRecipe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddRecipeToMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddRecipeToMenu.Designer.cs">
+      <DependentUpon>AddRecipeToMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Enumerations\ReportType.cs" />
+    <Compile Include="FrmMenus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMenus.Designer.cs">
+      <DependentUpon>FrmMenus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMenu.Designer.cs">
+      <DependentUpon>FrmMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,12 +114,6 @@
     <Compile Include="FrmRecipe.Designer.cs">
       <DependentUpon>FrmRecipe.cs</DependentUpon>
     </Compile>
-    <Compile Include="Izvještaj.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Izvještaj.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="FrmRecipes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,15 +121,27 @@
       <DependentUpon>FrmRecipes.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Ingredient.cs" />
+    <Compile Include="Models\Measurement.cs" />
+    <Compile Include="Models\Menu.cs" />
     <Compile Include="Models\Recipe.cs" />
+    <Compile Include="Models\TypeMeal.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IngredientRepository.cs" />
+    <Compile Include="Repositories\MeasurementRepository.cs" />
+    <Compile Include="Repositories\MenuRepository.cs" />
     <Compile Include="Repositories\RecipeRepository.cs" />
+    <Compile Include="Repositories\TypeMealRepository.cs" />
     <Compile Include="RptAllIngredients.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>RptAllIngredients.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RptAllMenus.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptAllMenus.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="RptAllRecipes.cs">
@@ -114,6 +150,12 @@
       <DependentUpon>RptAllRecipes.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <EmbeddedResource Include="AddIngredientToRecipe.resx">
+      <DependentUpon>AddIngredientToRecipe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddRecipeToMenu.resx">
+      <DependentUpon>AddRecipeToMenu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dialog.resx">
       <DependentUpon>Dialog.cs</DependentUpon>
     </EmbeddedResource>
@@ -123,18 +165,23 @@
     <EmbeddedResource Include="FrmIngredients.resx">
       <DependentUpon>FrmIngredients.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmMenu.resx">
+      <DependentUpon>FrmMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMenus.resx">
+      <DependentUpon>FrmMenus.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmRecipe.resx">
       <DependentUpon>FrmRecipe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmReport.resx">
       <DependentUpon>FrmReport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Izvještaj.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>Izvještaj.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="FrmRecipes.resx">
       <DependentUpon>FrmRecipes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -144,10 +191,15 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="RptAllIngredients.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RptAllIngredients.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RptAllMenus.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptAllMenus.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="RptAllRecipes.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -169,6 +221,23 @@
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Photos\baking.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Photos\cake.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Photos\chef.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Photos\cooking.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Photos\bread.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Photos\cheffilled.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

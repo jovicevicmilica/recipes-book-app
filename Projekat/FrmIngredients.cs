@@ -22,8 +22,6 @@ namespace Projekat
         public FrmIngredients()
         {
             InitializeComponent();
-            this.viewIngredientsMenuItem.Click += (sender, e) => MenuHelper.PreviewIngredients(this);
-            this.viewRecipesMenuItem.Click += (sender, e) => MenuHelper.PreviewRecipes(this);
             this.exitMenuItem.Click += (sender, e) => MenuHelper.ExitApplication();
             this.addRecipeMenuItem.Click += (sender, e) => MenuHelper.AddRecipe(new FrmRecipes()); //dodavanje novog recepta preko menu helper - a, vraćemo se na glavnu formu recepata kad ga dodamo
             this.addIngredientMenuItem.Click += (sender, e) => MenuHelper.AddIngredient(this);
@@ -31,14 +29,45 @@ namespace Projekat
             //izvještaji
             allRcpReportMenuItem.Click += (sender, e) => MenuHelper.AllRcpReportMenuItem_Click();
             allIngrReportMenuItem.Click += (sender, e) => MenuHelper.AllIngrReportMenuItem_Click();
+            allMenusReportMenuItem.Click += (sender, e) => MenuHelper.AllMenusReportMenuItem_Click();
 
             this.btnEditIngredient.Click += BtnEditIngredient_Click; //da ga ažuriramo
             this.btnDeleteIngredient.Click += BtnDeleteIngredient_Click; //da ga obrišemo
-            this.dgIngredients.CellClick += DgIngredients_CellClick; ; //da se selektuje onaj na čije polje kliknemo 
+            this.btnAddToRecipe.Click += BtnAddToRecipe_Click; //da dodamo sastojak u recept
+            this.dgIngredients.CellClick += DgIngredients_CellClick; ; //da se selektuje onaj na čije polje kliknemo
+            this.btnSearch.Click += BtnSearch_Click; //search funkcionalnost
 
             this.dgIngredients.RowValidated += DgIngredients_RowValidated;
 
             InitDataSqlAdapter();
+        }
+
+        private void BtnSearch_Click(object sender, EventArgs e)
+        {
+            string searchText = this.txtNameSearch.Text;
+
+            this.data = IngredientRepository.SearchIngredients(searchText);
+            if (this.data != null)
+            {
+                this.dgIngredients.DataSource = this.data;
+            }
+            else
+            {
+                MessageBox.Show("Greska pri ucitavanju sastojaka!");
+            }
+        }
+
+        private void BtnAddToRecipe_Click(object sender, EventArgs e)
+        {
+            if (this.selectedIngredientID == -1)
+            {
+                MessageBox.Show("Odaberite sastojak koji biste da dodate u recept!");
+            }
+            else
+            {
+                AddIngredientToRecipe frmAdd = new AddIngredientToRecipe(this.selectedIngredientID);
+                frmAdd.ShowDialog();
+            }
         }
 
         public void InitData()
@@ -75,7 +104,7 @@ namespace Projekat
             }
             else
             {
-                Dialog customDialog = new Dialog("Da li ste sigurni da zelite da obrisete sastojak?");
+                Dialog customDialog = new Dialog("Da li ste sigurni da želite da obrišete sastojak?");
                 DialogResult dialogR = customDialog.ShowDialog();
                 if (dialogR == DialogResult.Yes)
                 {
