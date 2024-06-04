@@ -36,7 +36,7 @@
             // 
             // btnYes
             // 
-            this.btnYes.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnYes.Font = new System.Drawing.Font("Abel Pro", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnYes.Location = new System.Drawing.Point(46, 145);
             this.btnYes.Name = "btnYes";
             this.btnYes.Size = new System.Drawing.Size(122, 50);
@@ -46,7 +46,7 @@
             // 
             // btnNo
             // 
-            this.btnNo.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNo.Font = new System.Drawing.Font("Abel Pro", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNo.Location = new System.Drawing.Point(242, 145);
             this.btnNo.Name = "btnNo";
             this.btnNo.Size = new System.Drawing.Size(122, 50);
@@ -57,7 +57,7 @@
             // lblTitle
             // 
             this.lblTitle.AllowDrop = true;
-            this.lblTitle.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Font = new System.Drawing.Font("Abel Pro", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.White;
             this.lblTitle.Location = new System.Drawing.Point(52, 33);
             this.lblTitle.Name = "lblTitle";
@@ -68,7 +68,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Tan;
+            this.BackColor = System.Drawing.Color.DarkOrchid;
             this.ClientSize = new System.Drawing.Size(406, 240);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.btnNo);

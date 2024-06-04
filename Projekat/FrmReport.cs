@@ -27,6 +27,11 @@ namespace Projekat
                 RptAllIngredients rptAllIngredients = new RptAllIngredients();
                 this.rptViewer.ReportSource = rptAllIngredients;
             }
+            else if (rptType == ReportType.AllMenus)
+            {
+                RptAllMenus rptAllMenus = new RptAllMenus();
+                this.rptViewer.ReportSource = rptAllMenus;
+            }
         }
     }
 }

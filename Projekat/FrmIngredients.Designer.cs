@@ -47,14 +47,16 @@
             this.allRcpReportMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.allMenusReportMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgIngredients)).BeginInit();
             this.menuStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnDeleteIngredient
             // 
-            this.btnDeleteIngredient.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeleteIngredient.Location = new System.Drawing.Point(238, 110);
+            this.btnDeleteIngredient.Font = new System.Drawing.Font("Abel Pro", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteIngredient.Location = new System.Drawing.Point(270, 122);
             this.btnDeleteIngredient.Name = "btnDeleteIngredient";
             this.btnDeleteIngredient.Size = new System.Drawing.Size(194, 42);
             this.btnDeleteIngredient.TabIndex = 9;
@@ -63,8 +65,8 @@
             // 
             // btnEditIngredient
             // 
-            this.btnEditIngredient.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditIngredient.Location = new System.Drawing.Point(12, 110);
+            this.btnEditIngredient.Font = new System.Drawing.Font("Abel Pro", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditIngredient.Location = new System.Drawing.Point(42, 122);
             this.btnEditIngredient.Name = "btnEditIngredient";
             this.btnEditIngredient.Size = new System.Drawing.Size(209, 42);
             this.btnEditIngredient.TabIndex = 8;
@@ -74,11 +76,11 @@
             // lblIngredients
             // 
             this.lblIngredients.AutoSize = true;
-            this.lblIngredients.Font = new System.Drawing.Font("Poppins", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIngredients.Font = new System.Drawing.Font("Becky Tahlia", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIngredients.ForeColor = System.Drawing.Color.White;
-            this.lblIngredients.Location = new System.Drawing.Point(2, 47);
+            this.lblIngredients.Location = new System.Drawing.Point(283, 71);
             this.lblIngredients.Name = "lblIngredients";
-            this.lblIngredients.Size = new System.Drawing.Size(160, 58);
+            this.lblIngredients.Size = new System.Drawing.Size(136, 45);
             this.lblIngredients.TabIndex = 7;
             this.lblIngredients.Text = "Sastojci";
             this.lblIngredients.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -87,7 +89,7 @@
             // 
             this.dgIngredients.BackgroundColor = System.Drawing.Color.White;
             this.dgIngredients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgIngredients.Location = new System.Drawing.Point(167, 228);
+            this.dgIngredients.Location = new System.Drawing.Point(167, 240);
             this.dgIngredients.Name = "dgIngredients";
             this.dgIngredients.RowHeadersWidth = 51;
             this.dgIngredients.RowTemplate.Height = 24;
@@ -96,8 +98,8 @@
             // 
             // btnAddToRecipe
             // 
-            this.btnAddToRecipe.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddToRecipe.Location = new System.Drawing.Point(500, 110);
+            this.btnAddToRecipe.Font = new System.Drawing.Font("Abel Pro", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddToRecipe.Location = new System.Drawing.Point(483, 122);
             this.btnAddToRecipe.Name = "btnAddToRecipe";
             this.btnAddToRecipe.Size = new System.Drawing.Size(208, 42);
             this.btnAddToRecipe.TabIndex = 11;
@@ -107,25 +109,26 @@
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.Location = new System.Drawing.Point(7, 178);
+            this.lblName.Font = new System.Drawing.Font("Abel Pro", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.ForeColor = System.Drawing.Color.White;
+            this.lblName.Location = new System.Drawing.Point(121, 189);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(55, 26);
+            this.lblName.Size = new System.Drawing.Size(54, 21);
             this.lblName.TabIndex = 12;
             this.lblName.Text = "Naziv:";
             // 
             // txtNameSearch
             // 
-            this.txtNameSearch.Font = new System.Drawing.Font("Poppins", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNameSearch.Location = new System.Drawing.Point(68, 174);
+            this.txtNameSearch.Font = new System.Drawing.Font("Abel Pro", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNameSearch.Location = new System.Drawing.Point(182, 185);
             this.txtNameSearch.Name = "txtNameSearch";
-            this.txtNameSearch.Size = new System.Drawing.Size(168, 30);
+            this.txtNameSearch.Size = new System.Drawing.Size(168, 28);
             this.txtNameSearch.TabIndex = 13;
             // 
             // btnSearch
             // 
-            this.btnSearch.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.Location = new System.Drawing.Point(270, 169);
+            this.btnSearch.Font = new System.Drawing.Font("Abel Pro", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.Location = new System.Drawing.Point(384, 177);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(194, 42);
             this.btnSearch.TabIndex = 14;
@@ -142,8 +145,8 @@
             this.exitMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(720, 38);
-            this.menuStrip.TabIndex = 15;
+            this.menuStrip.Size = new System.Drawing.Size(720, 32);
+            this.menuStrip.TabIndex = 31;
             this.menuStrip.Text = "mainMenu";
             // 
             // addMenuItem
@@ -153,31 +156,43 @@
             this.addIngredientMenuItem,
             this.addRecipeMenuItem,
             this.addMenuMenuItem});
-            this.addMenuItem.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addMenuItem.Font = new System.Drawing.Font("Abel Pro", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addMenuItem.Name = "addMenuItem";
-            this.addMenuItem.Size = new System.Drawing.Size(76, 34);
+            this.addMenuItem.Size = new System.Drawing.Size(71, 28);
             this.addMenuItem.Text = "Dodaj";
             // 
             // addIngredientMenuItem
             // 
-            this.addIngredientMenuItem.BackColor = System.Drawing.Color.Bisque;
+            this.addIngredientMenuItem.BackColor = System.Drawing.Color.DarkOrchid;
+            this.addIngredientMenuItem.Font = new System.Drawing.Font("Abel Pro", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addIngredientMenuItem.ForeColor = System.Drawing.Color.White;
+            this.addIngredientMenuItem.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.addIngredientMenuItem.Name = "addIngredientMenuItem";
-            this.addIngredientMenuItem.Size = new System.Drawing.Size(171, 34);
+            this.addIngredientMenuItem.Size = new System.Drawing.Size(158, 26);
             this.addIngredientMenuItem.Text = "Sastojak";
+            this.addIngredientMenuItem.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // addRecipeMenuItem
             // 
-            this.addRecipeMenuItem.BackColor = System.Drawing.Color.Bisque;
+            this.addRecipeMenuItem.BackColor = System.Drawing.Color.DarkOrchid;
+            this.addRecipeMenuItem.Font = new System.Drawing.Font("Abel Pro", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addRecipeMenuItem.ForeColor = System.Drawing.Color.White;
+            this.addRecipeMenuItem.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.addRecipeMenuItem.Name = "addRecipeMenuItem";
-            this.addRecipeMenuItem.Size = new System.Drawing.Size(171, 34);
+            this.addRecipeMenuItem.Size = new System.Drawing.Size(158, 26);
             this.addRecipeMenuItem.Text = "Recept";
+            this.addRecipeMenuItem.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // addMenuMenuItem
             // 
-            this.addMenuMenuItem.BackColor = System.Drawing.Color.Bisque;
+            this.addMenuMenuItem.BackColor = System.Drawing.Color.DarkOrchid;
+            this.addMenuMenuItem.Font = new System.Drawing.Font("Abel Pro", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addMenuMenuItem.ForeColor = System.Drawing.Color.White;
+            this.addMenuMenuItem.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.addMenuMenuItem.Name = "addMenuMenuItem";
-            this.addMenuMenuItem.Size = new System.Drawing.Size(171, 34);
+            this.addMenuMenuItem.Size = new System.Drawing.Size(158, 26);
             this.addMenuMenuItem.Text = "Meni";
+            this.addMenuMenuItem.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // reportsMenuItem
             // 
@@ -185,45 +200,62 @@
             this.allIngrReportMenuItem,
             this.allRcpReportMenuItem,
             this.allMenusReportMenuItem});
-            this.reportsMenuItem.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reportsMenuItem.Font = new System.Drawing.Font("Abel Pro", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.reportsMenuItem.Name = "reportsMenuItem";
-            this.reportsMenuItem.Size = new System.Drawing.Size(98, 34);
+            this.reportsMenuItem.Size = new System.Drawing.Size(102, 28);
             this.reportsMenuItem.Text = "Izvještaji";
             // 
             // allIngrReportMenuItem
             // 
-            this.allIngrReportMenuItem.BackColor = System.Drawing.Color.Bisque;
+            this.allIngrReportMenuItem.BackColor = System.Drawing.Color.DarkOrchid;
+            this.allIngrReportMenuItem.Font = new System.Drawing.Font("Abel Pro", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.allIngrReportMenuItem.ForeColor = System.Drawing.Color.White;
             this.allIngrReportMenuItem.Name = "allIngrReportMenuItem";
-            this.allIngrReportMenuItem.Size = new System.Drawing.Size(193, 34);
+            this.allIngrReportMenuItem.Size = new System.Drawing.Size(177, 26);
             this.allIngrReportMenuItem.Text = "Svi sastojci";
             // 
             // allRcpReportMenuItem
             // 
-            this.allRcpReportMenuItem.BackColor = System.Drawing.Color.Bisque;
+            this.allRcpReportMenuItem.BackColor = System.Drawing.Color.DarkOrchid;
+            this.allRcpReportMenuItem.Font = new System.Drawing.Font("Abel Pro", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.allRcpReportMenuItem.ForeColor = System.Drawing.Color.White;
             this.allRcpReportMenuItem.Name = "allRcpReportMenuItem";
-            this.allRcpReportMenuItem.Size = new System.Drawing.Size(193, 34);
+            this.allRcpReportMenuItem.Size = new System.Drawing.Size(177, 26);
             this.allRcpReportMenuItem.Text = "Svi recepti";
             // 
             // allMenusReportMenuItem
             // 
-            this.allMenusReportMenuItem.BackColor = System.Drawing.Color.Bisque;
+            this.allMenusReportMenuItem.BackColor = System.Drawing.Color.DarkOrchid;
+            this.allMenusReportMenuItem.Font = new System.Drawing.Font("Abel Pro", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.allMenusReportMenuItem.ForeColor = System.Drawing.Color.White;
             this.allMenusReportMenuItem.Name = "allMenusReportMenuItem";
-            this.allMenusReportMenuItem.Size = new System.Drawing.Size(193, 34);
+            this.allMenusReportMenuItem.Size = new System.Drawing.Size(177, 26);
             this.allMenusReportMenuItem.Text = "Svi meniji";
             // 
             // exitMenuItem
             // 
-            this.exitMenuItem.Font = new System.Drawing.Font("Poppins", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.exitMenuItem.Font = new System.Drawing.Font("Abel Pro", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.exitMenuItem.Name = "exitMenuItem";
-            this.exitMenuItem.Size = new System.Drawing.Size(65, 34);
+            this.exitMenuItem.Size = new System.Drawing.Size(64, 28);
             this.exitMenuItem.Text = "Izađi";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::Projekat.Properties.Resources.milk;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.Location = new System.Drawing.Point(425, 66);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(61, 50);
+            this.pictureBox1.TabIndex = 32;
+            this.pictureBox1.TabStop = false;
             // 
             // FrmIngredients
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Tan;
-            this.ClientSize = new System.Drawing.Size(720, 495);
+            this.BackColor = System.Drawing.Color.MediumOrchid;
+            this.ClientSize = new System.Drawing.Size(720, 524);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.menuStrip);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtNameSearch);
@@ -240,6 +272,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgIngredients)).EndInit();
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -265,5 +298,6 @@
         private System.Windows.Forms.ToolStripMenuItem allRcpReportMenuItem;
         private System.Windows.Forms.ToolStripMenuItem allMenusReportMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitMenuItem;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

@@ -108,7 +108,7 @@ namespace Projekat
                 DialogResult dialogR = customDialog.ShowDialog();
                 if (dialogR == DialogResult.Yes)
                 {
-                    bool result = RecipeRepository.DeleteRecipe(this.selectedIngredientID);
+                    bool result = IngredientRepository.DeleteIngredient(this.selectedIngredientID);
                     if (result)
                     {
                         this.InitData();
@@ -116,7 +116,7 @@ namespace Projekat
                     }
                     else
                     {
-                        MessageBox.Show("Greska pri brisanju sastojka!");
+                        MessageBox.Show("Greška pri brisanju sastojka!");
                     }
                 }
             }

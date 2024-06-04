@@ -127,6 +127,11 @@
     <Compile Include="Models\TypeMeal.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Repositories\IngredientRepository.cs" />
     <Compile Include="Repositories\MeasurementRepository.cs" />
     <Compile Include="Repositories\MenuRepository.cs" />
@@ -185,14 +190,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="RptAllIngredients.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RptAllIngredients.cs</LastGenOutput>
@@ -238,6 +238,39 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Photos\cheffilled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Photos\baking %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Photos\cloud.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Photos\open-book %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Photos\frying-pan.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Photos\milk.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Photos\cloud %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Photos\cupcake.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Photos\cloud-computing.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Photos\apple.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Photos\cherries.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Photos\cupcake %281%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
