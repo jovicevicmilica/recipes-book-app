@@ -45,7 +45,12 @@ namespace Projekat
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
-            // TODO: VALIDACIJA
+            //validacija
+            if (string.IsNullOrWhiteSpace(this.txtName.Text))
+            {
+                MessageBox.Show("Naziv sastojka je obavezan.");
+                return;
+            }
 
             Ingredient ingr = new Ingredient();
             ingr.Naziv = this.txtName.Text;
@@ -66,11 +71,11 @@ namespace Projekat
             if (result)
             {
                 this.parentForm.InitData();
-                MessageBox.Show("Uspjesno sacuvan sastojak!");
+                MessageBox.Show("Uspješno sačuvan sastojak!");
             }
             else
             {
-                MessageBox.Show("Greska pri cuvanju sastojka!");
+                MessageBox.Show("Greška pri čuvanju sastojka!");
             }
         }
     }

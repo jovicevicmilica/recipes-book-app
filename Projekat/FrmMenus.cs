@@ -56,7 +56,7 @@ namespace Projekat
             }
             else
             {
-                MessageBox.Show("Greska pri ucitavanju menija!");
+                MessageBox.Show("Greška pri učitavanju menija!");
             }
         }
 
@@ -71,7 +71,7 @@ namespace Projekat
             }
             else
             {
-                MessageBox.Show("Greska pri ucitavanju menija!");
+                MessageBox.Show("Greška pri učitavanju menija!");
             }
         }
 
@@ -129,7 +129,7 @@ namespace Projekat
                     }
                     else
                     {
-                        MessageBox.Show("Greska pri brisanju menija!");
+                        MessageBox.Show("Greška pri brisanju menija!");
                     }
                 }
             }

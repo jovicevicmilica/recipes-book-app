@@ -13,6 +13,39 @@ namespace Projekat.Repositories
 {
     internal class MenuRepository
     {
+        //provjerimo da li recept već postoji u meniju, ako postoji, radimo ažuriranje, slično kao kod sastojaka
+        public static bool RecipeExistsInMenu(int recipeID, int menuID)
+        {
+            using (SqlConnection connection = new SqlConnection("Server=MILICA;Database=ReceptDB;Trusted_Connection=True;"))
+            {
+                string query = "SELECT COUNT(*) FROM ReceptMeni WHERE ReceptID = @ReceptID AND MeniID = @MeniID";
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@ReceptID", recipeID);
+                cmd.Parameters.AddWithValue("@MeniID", menuID);
+
+                connection.Open();
+                int count = (int)cmd.ExecuteScalar();
+                return count > 0;
+            }
+        }
+
+        //u slučaju da radimo ažuriranje
+        public static bool UpdateRecipeInMenu(int recipeID, int menuID, string typemeal)
+        {
+            using (SqlConnection connection = new SqlConnection("Server=MILICA;Database=ReceptDB;Trusted_Connection=True;"))
+            {
+                string query = "UPDATE ReceptMeni SET TipObroka = @TipObroka WHERE ReceptID = @ReceptID AND MeniID = @MeniID";
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@TipObroka", typemeal);
+                cmd.Parameters.AddWithValue("@ReceptID", recipeID);
+                cmd.Parameters.AddWithValue("@MeniID", menuID);
+
+                connection.Open();
+                int rowsAffected = cmd.ExecuteNonQuery();
+                return rowsAffected > 0;
+            }
+        }
+
         public static bool AddRecipeToMenu(int recipeID, int menuID, string typemeal)
         {
             using (SqlConnection connection = new SqlConnection("Server=MILICA;Database=ReceptDB;Trusted_Connection=True;"))
@@ -82,7 +115,7 @@ namespace Projekat.Repositories
             }
         }
 
-        public static DataTable GetRecipesByMenuID(int menuID)
+        public static DataTable GetRecipesByMenuID(int menuID) //da za svaki meni vidimo koji recepti su vezani za njega, u vidu data table
         {
             using (SqlConnection connection = new SqlConnection("Server=MILICA;Database=ReceptDB;Trusted_Connection=True;"))
             {
@@ -138,7 +171,7 @@ namespace Projekat.Repositories
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Greska pri konekciji sa bazom! Detalji: " + ex.Message);
+                    MessageBox.Show("Greška pri konekciji sa bazom! Detalji: " + ex.Message);
                 }
                 finally
                 {
@@ -179,7 +212,7 @@ namespace Projekat.Repositories
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Greska pri citanju podataka o meniju! Detalji: " + ex.Message);
+                    MessageBox.Show("Greška pri čitanju podataka o meniju! Detalji: " + ex.Message);
                 }
                 finally
                 {

@@ -48,8 +48,26 @@ namespace Projekat
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
-            // TODO: VALIDACIJA
+            //validacija
+            if (string.IsNullOrWhiteSpace(this.txtName.Text))
+            {
+                MessageBox.Show("Naziv je obavezan.");
+                return;
+            }
 
+            if (string.IsNullOrWhiteSpace(this.txtDesc.Text))
+            {
+                MessageBox.Show("Opis je obavezan.");
+                return;
+            }
+
+            if (this.dtpMakingDate.Value == null)
+            {
+                MessageBox.Show("Datum kreiranja je obavezan.");
+                return;
+            }
+
+            //kreiranje novog menija
             Menu menu = new Menu();
             menu.Naziv = this.txtName.Text;
             menu.Opis = this.txtDesc.Text;
@@ -71,11 +89,11 @@ namespace Projekat
             if (result)
             {
                 this.parentForm.InitData();
-                MessageBox.Show("Uspjesno sacuvan meni!");
+                MessageBox.Show("Uspješno sačuvan meni!");
             }
             else
             {
-                MessageBox.Show("Greska pri cuvanju menija!");
+                MessageBox.Show("Greška pri čuvanju menija!");
             }
         }
     }

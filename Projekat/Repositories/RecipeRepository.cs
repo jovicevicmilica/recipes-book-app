@@ -71,12 +71,12 @@ namespace Projekat.Repositories
             }
         }
 
-        public static DataTable SearchRecipes(string searchText, int timeFrom, int timeTo)
+        public static DataTable SearchRecipes(string searchText, int timeFrom, int timeTo, int numPortions)
         {
             using (SqlConnection connection = new SqlConnection("Server=MILICA;Database=ReceptDB;Trusted_Connection=True;"))
             {
                 SqlDataReader reader = null;
-                DataTable result = null;
+                DataTable result = new DataTable();
                 try
                 {
                     connection.Open();
@@ -84,7 +84,7 @@ namespace Projekat.Repositories
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = connection;
 
-                    if (timeFrom == -1 && timeTo == -1 && string.IsNullOrEmpty(searchText))
+                    if (timeFrom == -1 && timeTo == -1 && numPortions == -1 && string.IsNullOrEmpty(searchText))
                     {
                         cmd.CommandText = "SELECT * FROM Recepti";
                     }
@@ -109,18 +109,23 @@ namespace Projekat.Repositories
                             cmd.Parameters.AddWithValue("TimeTo", timeTo);
                         }
 
-                        cmdText = cmdText.Substring(0, cmdText.Length - 4);
+                        if (numPortions != -1)
+                        {
+                            cmdText = cmdText + "BrojPorcija = @NumPortions AND ";
+                            cmd.Parameters.AddWithValue("NumPortions", numPortions);
+                        }
+
+                        cmdText = cmdText.Substring(0, cmdText.Length - 4); // uklanja poslednji " AND"
                         cmd.CommandText = cmdText;
                     }
 
                     reader = cmd.ExecuteReader();
-                    result = new DataTable();
                     result.Load(reader);
                     reader.Close();
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Greska pri konekciji sa bazom! Detalji: " + ex.Message);
+                    MessageBox.Show("Greška pri konekciji sa bazom! Detalji: " + ex.Message);
                 }
                 finally
                 {
@@ -163,7 +168,7 @@ namespace Projekat.Repositories
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Greska pri citanju podataka o receptu! Detalji: " + ex.Message);
+                    MessageBox.Show("Greška pri čitanju podataka o receptu! Detalji: " + ex.Message);
                 }
                 finally
                 {
@@ -265,8 +270,16 @@ namespace Projekat.Repositories
                     connection.Open();
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = connection;
+
+                    //prvo obrišemo povezane redove iz tabele ReceptMeni
+                    cmd.CommandText = "DELETE FROM ReceptMeni WHERE ReceptID = @ReceptID";
+                    cmd.Parameters.AddWithValue("@ReceptID", recipeID);
+                    cmd.ExecuteNonQuery();
+
+                    //zatim obrišemo red iz tabele Recepti
                     cmd.CommandText = "DELETE FROM Recepti WHERE ReceptID = @ReceptID";
-                    cmd.Parameters.AddWithValue("ReceptID", recipeID);
+                    cmd.Parameters.Clear(); //očistimo parametre prije ponovnog dodavanja
+                    cmd.Parameters.AddWithValue("@ReceptID", recipeID);
 
                     int affectedRows = cmd.ExecuteNonQuery();
                     if (affectedRows > 0)
@@ -321,6 +334,40 @@ namespace Projekat.Repositories
                 }
 
                 return result;
+            }
+        }
+
+        //prvo provjerimo da li je sastojak već u receptu, jer ako jeste, ažuriramo ga, a ne da se duplira
+        public static bool IngredientExistsInRecipe(int ingredientID, int recipeID)
+        {
+            using (SqlConnection connection = new SqlConnection("Server=MILICA;Database=ReceptDB;Trusted_Connection=True;"))
+            {
+                string query = "SELECT COUNT(*) FROM ReceptSastojci WHERE SastojakID = @SastojakID AND ReceptID = @ReceptID";
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@SastojakID", ingredientID);
+                cmd.Parameters.AddWithValue("@ReceptID", recipeID);
+
+                connection.Open();
+                int count = (int)cmd.ExecuteScalar();
+                return count > 0;
+            }
+        }
+
+        //vršimo ažuriranje sastojka u receptu, ako već postoji
+        public static bool UpdateIngredientInRecipe(int ingredientID, int recipeID, decimal amount, string measurement)
+        {
+            using (SqlConnection connection = new SqlConnection("Server=MILICA;Database=ReceptDB;Trusted_Connection=True;"))
+            {
+                string query = "UPDATE ReceptSastojci SET Kolicina = @Kolicina, MjernaJedinica = @MjernaJedinica WHERE SastojakID = @SastojakID AND ReceptID = @ReceptID";
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@Kolicina", amount);
+                cmd.Parameters.AddWithValue("@MjernaJedinica", measurement);
+                cmd.Parameters.AddWithValue("@SastojakID", ingredientID);
+                cmd.Parameters.AddWithValue("@ReceptID", recipeID);
+
+                connection.Open();
+                int rowsAffected = cmd.ExecuteNonQuery();
+                return rowsAffected > 0;
             }
         }
     }

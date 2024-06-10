@@ -12,7 +12,7 @@ namespace Projekat.Repositories
 {
     internal class IngredientRepository
     {
-        public static DataTable GetIngredientsDataTable()
+        public static DataTable GetIngredientsDataTable() 
         {
             using (SqlConnection connection = new SqlConnection("Server=MILICA;Database=ReceptDB;Trusted_Connection=True;"))
             {
@@ -27,7 +27,7 @@ namespace Projekat.Repositories
                     cmd.Connection = connection;
 
                     reader = cmd.ExecuteReader();
-                    result.Load(reader);
+                    result.Load(reader); //pročitamo iz baze i učitamo
 
                     reader.Close();
                 }
@@ -38,7 +38,7 @@ namespace Projekat.Repositories
                 finally
                 {
                     if (reader != null && !reader.IsClosed) reader.Close();
-                    if (connection != null) { connection.Close(); }
+                    if (connection != null) { connection.Close(); } //na kraju ugasimo
                 }
 
                 return result;
@@ -57,8 +57,8 @@ namespace Projekat.Repositories
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = connection;
 
-                    cmd.CommandText = "SELECT * FROM Sastojci WHERE SastojakID = @SastojakID";
-                    cmd.Parameters.AddWithValue("SastojakID", ingredientID);
+                    cmd.CommandText = "SELECT * FROM Sastojci WHERE SastojakID = @SastojakID"; //komanda koja nam vraće sastojak na osnovu ID - ja
+                    cmd.Parameters.AddWithValue("SastojakID", ingredientID); //dodijelimo mu vrijednost
 
                     reader = cmd.ExecuteReader();
                     reader.Read();
@@ -71,7 +71,7 @@ namespace Projekat.Repositories
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Greska pri citanju podataka o sastojku! Detalji: " + ex.Message);
+                    MessageBox.Show("Greška pri čitanju podataka o sastojku! Detalji: " + ex.Message);
                 }
                 finally
                 {
@@ -83,7 +83,7 @@ namespace Projekat.Repositories
             }
         }
 
-        public static bool InsertIngredient(Ingredient ingr)
+        public static bool InsertIngredient(Ingredient ingr) //ubacivanje sastojka u bazu
         {
             using (SqlConnection connection = new SqlConnection("Server=MILICA;Database=ReceptDB;Trusted_Connection=True;"))
             {
@@ -98,7 +98,7 @@ namespace Projekat.Repositories
 
                     cmd.Parameters.AddWithValue("Naziv", ingr.Naziv);
 
-                    int affectedRows = cmd.ExecuteNonQuery();
+                    int affectedRows = cmd.ExecuteNonQuery(); //brojimo koliko se redova promijenilo u tabeli
                     if (affectedRows > 0) //ako se nešto promijenilo, promijenimo sastojak
                     {
                         result = true;
@@ -117,7 +117,7 @@ namespace Projekat.Repositories
             }
         }
 
-        public static bool UpdateIngredient(Ingredient ingr)
+        public static bool UpdateIngredient(Ingredient ingr) //ažuriranje sastojka
         {
             using (SqlConnection connection = new SqlConnection("Server=MILICA;Database=ReceptDB;Trusted_Connection=True;"))
             {
@@ -127,7 +127,7 @@ namespace Projekat.Repositories
                     connection.Open();
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = connection;
-                    cmd.CommandText = "UPDATE Sastojci SET Naziv = @Naziv WHERE SastojakID = @SastojakID";
+                    cmd.CommandText = "UPDATE Sastojci SET Naziv = @Naziv WHERE SastojakID = @SastojakID"; 
 
                     cmd.Parameters.AddWithValue("Naziv", ingr.Naziv);
                     cmd.Parameters.AddWithValue("SastojakID", ingr.SastojakID);
@@ -161,8 +161,16 @@ namespace Projekat.Repositories
                     connection.Open();
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = connection;
+
+                    //prvo brišemo iz recept sastojci, za svaki slučaj ako je sastojak u receptu
+                    cmd.CommandText = "DELETE FROM ReceptSastojci WHERE SastojakID = @SastojakID";
+                    cmd.Parameters.AddWithValue("@SastojakID", ingredientID);
+                    cmd.ExecuteNonQuery();
+
+                    //zatim ga obrišemo skroz iz sastojaka
                     cmd.CommandText = "DELETE FROM Sastojci WHERE SastojakID = @SastojakID";
-                    cmd.Parameters.AddWithValue("SastojakID", ingredientID);
+                    cmd.Parameters.Clear(); 
+                    cmd.Parameters.AddWithValue("@SastojakID", ingredientID);
 
                     int affectedRows = cmd.ExecuteNonQuery();
                     if (affectedRows > 0)
@@ -183,7 +191,7 @@ namespace Projekat.Repositories
             }
         }
 
-        public static DataTable SearchIngredients(string searchText)
+        public static DataTable SearchIngredients(string searchText) //pretraga
         {
             using (SqlConnection connection = new SqlConnection("Server=MILICA;Database=ReceptDB;Trusted_Connection=True;"))
             {
@@ -196,7 +204,7 @@ namespace Projekat.Repositories
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = connection;
 
-                    if (string.IsNullOrEmpty(searchText)) //ako je search bar prazan
+                    if (string.IsNullOrEmpty(searchText)) //ako je search bar prazan, vratimo SVE
                     {
                         cmd.CommandText = "SELECT * FROM Sastojci";
                     }
@@ -205,12 +213,13 @@ namespace Projekat.Repositories
                         string cmdText = "SELECT * FROM Sastojci WHERE ";
                         if (!string.IsNullOrEmpty(searchText))
                         {
-                            cmdText = cmdText + "(Naziv LIKE @SearchText) AND ";
-                            cmd.Parameters.AddWithValue("SearchText", "%" + searchText + "%");
+                            cmdText = cmdText + "(Naziv LIKE @SearchText)"; //koristimo LIKE da bi nam vratilo sve što se slaže barem dijelom sa onim što je unijeto
+                            cmd.Parameters.AddWithValue("SearchText", "%" + searchText + "%"); //koristimo % za pretraživanje uvijek
                         }
 
 
-                        cmdText = cmdText.Substring(0, cmdText.Length - 4);
+                        //cmdText = cmdText.Substring(0, cmdText.Length - 4);
+                        //ovo nam ne treba, nemamo AND
                         cmd.CommandText = cmdText;
                     }
 
@@ -221,7 +230,7 @@ namespace Projekat.Repositories
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Greska pri konekciji sa bazom! Detalji: " + ex.Message);
+                    MessageBox.Show("Greška pri konekciji sa bazom! Detalji: " + ex.Message);
                 }
                 finally
                 {

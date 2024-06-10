@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -33,24 +34,34 @@ namespace Projekat
             string measurement = this.cbMeasurement.SelectedValue.ToString();
             decimal amount;
 
-            //validacija unosa kolicine
+            //validacija unosa količine
             if (!decimal.TryParse(this.txtAmount.Text, out amount))
             {
-                MessageBox.Show("Unesite ispravnu kolicinu!");
+                MessageBox.Show("Unesite ispravnu količinu!");
                 return; //prekinemo ako unos nije validan
             }
 
-            bool result = RecipeRepository.AddIngredientToRecipe(ingredientID, recipeID, amount, measurement);
+            bool result = false;
+            if (RecipeRepository.IngredientExistsInRecipe(ingredientID, recipeID))
+            {
+                //ako sastojak već postoji, ažuriramo njegovu količinu i mjernu jedinicu
+                result = RecipeRepository.UpdateIngredientInRecipe(ingredientID, recipeID, amount, measurement);
+            }
+            else
+            {
+                //ako sastojak ne postoji, dodajemo ga
+                result = RecipeRepository.AddIngredientToRecipe(ingredientID, recipeID, amount, measurement);
+            }
+
             if (result)
             {
                 MessageBox.Show("Sastojak dodat u recept!");
             }
             else
             {
-                MessageBox.Show("Greska pri dodavanju sastojka u recept!");
+                MessageBox.Show("Greška pri dodavanju sastojka u recept!");
             }
         }
-
 
         private void InitData()
         {

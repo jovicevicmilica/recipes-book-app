@@ -31,17 +31,27 @@ namespace Projekat
             int menuID = Convert.ToInt32(this.cbMenu.SelectedValue);
             string typemeal = this.cbTypeMeal.SelectedValue.ToString();
 
-            bool result = MenuRepository.AddRecipeToMenu(recipeID, menuID, typemeal);
+            bool result = false;
+            if (MenuRepository.RecipeExistsInMenu(recipeID, menuID))
+            {
+                //ako je recept već u meniju, ažuriramo
+                result = MenuRepository.UpdateRecipeInMenu(recipeID, menuID, typemeal);
+            }
+            else
+            {
+                //ako recept ne postoji u meniju, dodajemo ga
+                result = MenuRepository.AddRecipeToMenu(recipeID, menuID, typemeal);
+            }
+
             if (result)
             {
                 MessageBox.Show("Recept dodat u meni!");
             }
             else
             {
-                MessageBox.Show("Greska pri dodavanju recepta u meni!");
+                MessageBox.Show("Greška pri dodavanju recepta u meni!");
             }
         }
-
 
         private void InitData()
         {

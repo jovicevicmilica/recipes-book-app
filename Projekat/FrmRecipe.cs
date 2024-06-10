@@ -49,19 +49,44 @@ namespace Projekat
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
-            // TODO: VALIDACIJA
+            //validacija
+            if (string.IsNullOrWhiteSpace(this.txtName.Text))
+            {
+                MessageBox.Show("Naziv je obavezan.");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(this.txtDesc.Text))
+            {
+                MessageBox.Show("Opis je obavezan.");
+                return;
+            }
+
+            if (!int.TryParse(this.txtTimeMaking.Text, out int vrijemePripreme))
+            {
+                MessageBox.Show("Vrijeme pripreme mora biti validan broj.");
+                return;
+            }
+
+            if (!int.TryParse(this.txtTimeCooking.Text, out int vrijemeKuvanja))
+            {
+                MessageBox.Show("Vrijeme kuvanja mora biti validan broj.");
+                return;
+            }
+
+            if (!int.TryParse(this.txtNumPortions.Text, out int brojPorcija))
+            {
+                MessageBox.Show("Broj porcija mora biti validan broj.");
+                return;
+            }
+
             Recipe rec = new Recipe();
             rec.Naziv = this.txtName.Text;
             rec.Opis = this.txtDesc.Text;
-
-            //konvertovanje vremena pripreme i vremena kuvanja iz tekstualnih polja u int, da bi sabrali ukupno
-            int vrijemePripreme = Convert.ToInt32(this.txtTimeMaking.Text);
-            int vrijemeKuvanja = Convert.ToInt32(this.txtTimeCooking.Text);
-
-            //izračunavanje ukupnog vremena kao zbira vremena pripreme i vremena kuvanja
             rec.VrijemePripreme = vrijemePripreme;
             rec.VrijemeKuvanja = vrijemeKuvanja;
             rec.UkupnoVrijeme = vrijemePripreme + vrijemeKuvanja;
+            rec.BrojPorcija = brojPorcija;
 
             rec.BrojPorcija = Convert.ToInt32(this.txtNumPortions.Text);
 
@@ -81,11 +106,11 @@ namespace Projekat
             if (result)
             {
                 this.parentForm.InitData();
-                MessageBox.Show("Uspjesno sacuvan recept!");
+                MessageBox.Show("Uspješno sačuvan recept!");
             }
             else
             {
-                MessageBox.Show("Greska pri cuvanju recepta!");
+                MessageBox.Show("Greška pri čuvanju recepta!");
             }
         }
     }

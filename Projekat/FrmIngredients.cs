@@ -53,7 +53,7 @@ namespace Projekat
             }
             else
             {
-                MessageBox.Show("Greska pri ucitavanju sastojaka!");
+                MessageBox.Show("Greška pri učitavanju sastojaka!");
             }
         }
 

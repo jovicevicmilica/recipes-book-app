@@ -58,14 +58,18 @@ namespace Projekat
             int.TryParse(this.txtTimeFrom.Text, out timeFrom);
             if (timeFrom == 0) timeFrom = -1;
 
-            this.data = RecipeRepository.SearchRecipes(searchText, timeFrom, timeTo);
+            int numPortions;
+            int.TryParse(this.txtNumPortionSearch.Text, out numPortions);
+            if (numPortions == 0) numPortions = -1;
+
+            this.data = RecipeRepository.SearchRecipes(searchText, timeFrom, timeTo, numPortions);
             if (this.data != null)
             {
                 this.dgRecipes.DataSource = this.data;
             }
             else
             {
-                MessageBox.Show("Greska pri ucitavanju recepata!");
+                MessageBox.Show("Greška pri učitavanju recepata!");
             }
         }
 
@@ -80,7 +84,7 @@ namespace Projekat
             }
             else
             {
-                MessageBox.Show("Greska pri ucitavanju recepata!");
+                MessageBox.Show("Greška pri učitavanju recepata!");
             }
         }
 
@@ -151,7 +155,7 @@ namespace Projekat
                     }
                     else
                     {
-                        MessageBox.Show("Greska pri brisanju recepta!");
+                        MessageBox.Show("Greška pri brisanju recepta!");
                     }
                 }
             }
